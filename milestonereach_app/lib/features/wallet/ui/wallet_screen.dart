@@ -3,9 +3,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../../dashboard/ui/widgets/reach_analytics_chart.dart';
 import 'widgets/upi_payment_qr_dialog.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import '../data/wallet_repository.dart';
 
 class WalletScreen extends ConsumerStatefulWidget {
@@ -109,7 +108,7 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          '₹${_balance.toLocaleString()}',
+                          '₹${NumberFormat.decimalPattern('en_IN').format(_balance)}',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 40,
@@ -130,7 +129,7 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  '₹${_pendingEscrow.toLocaleString()}',
+                                  '₹${NumberFormat.decimalPattern('en_IN').format(_pendingEscrow)}',
                                   style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
                                 ),
                               ],
